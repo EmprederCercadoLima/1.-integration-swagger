@@ -1,0 +1,8 @@
+spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant-path-matcher
+headers:
+  request-id: ${HEADERS_REQUEST_ID}
+  request-date: ${HEADERS_REQUEST_DATE}
+  request-app-code: ${HEADERS_REQUEST_APP_CODE}
