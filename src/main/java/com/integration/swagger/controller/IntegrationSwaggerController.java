@@ -32,7 +32,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RestController
-@RequestMapping("/v1")
+@RequestMapping("/integration-swagger/v1")
 public class IntegrationSwaggerController {
 	
 	@GetMapping("/hello-word")

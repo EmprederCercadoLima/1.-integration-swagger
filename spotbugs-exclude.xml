@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FindBugsFilter>
+
+    <Match>
+        <Package name="~pe\.com\.niubiz\**.*"/>
+        <Bug pattern="IMC_IMMATURE_CLASS_NO_TOSTRING, SPRING_ENDPOINT, SPRING_CSRF_PROTECTION_DISABLED"/>
+    </Match>
+
+ 	
+</FindBugsFilter>

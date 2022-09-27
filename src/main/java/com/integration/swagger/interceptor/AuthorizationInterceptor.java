@@ -49,7 +49,6 @@ public class AuthorizationInterceptor implements HandlerInterceptor {
 				
 				Boolean isValidBearerCommerce = parts[0].equals(REQUEST_BEARER_TOKEN_COMMERCE);
 				Boolean isValidBearerNiubiz = parts[0].equals(REQUEST_BEARER_TOKEN_NIUBIZ);
-				
 				if(isValidBearerCommerce) {
 					return this.isValidAuthorizationUserCommerce(parts[1], response);
 				} else if(isValidBearerNiubiz) {

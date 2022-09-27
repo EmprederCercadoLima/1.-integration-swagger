@@ -23,7 +23,7 @@ public class RequestResponseLoggingInterceptor implements HandlerInterceptor {
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) {
-		if(response != null) {
+		if(response != null && response.getContentType() != null ) {
 			log.info(".:. End process Status {} - Response {}", response.getStatus(), response.getContentType().getBytes().toString());	
 		}
 	}

@@ -5,12 +5,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/v2")
+@RequestMapping("/integration-swagger/v2")
 public class IntegrationSwaggerController2 {
 
 	@GetMapping("/hello-word")
 	public String getHelloWord() {
-		return "Hello word .:. Controller 2";
+		return "HellowordController2";
 	}
 	
 }

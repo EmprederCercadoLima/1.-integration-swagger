@@ -48,6 +48,14 @@
 		    <version>2.9.2</version>
 		</dependency>
 		<!-- End Integration Swagger -->
+		
+		<!-- Start Integration lombok -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<!-- End Integration lombok -->
 	</dependencies>
 
 	<build>
