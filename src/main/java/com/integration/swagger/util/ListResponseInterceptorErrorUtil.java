@@ -2,7 +2,6 @@ package com.integration.swagger.util;
 
 import java.util.List;
 
-
 public class ListResponseInterceptorErrorUtil {
 	
 	private List<ResponseInterceptorErrorUtil> responseInterceptorErrorUtil;
