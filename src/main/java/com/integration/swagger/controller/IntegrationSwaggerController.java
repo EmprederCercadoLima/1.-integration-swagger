@@ -19,10 +19,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.integration.swagger.dto.GetExampleParametersByQueryDto;
 import com.integration.swagger.dto.PostExampleBodyDto;
+import com.integration.swagger.response.FindUserCommerceResponse;
 import com.integration.swagger.response.GetExampleParameterResponse;
 import com.integration.swagger.response.HelloWordResponse;
 import com.integration.swagger.response.LoadHelloWordResponse;
 import com.integration.swagger.response.PostExampleBodyResponse;
+import com.integration.swagger.util.ListResponseBodyUtil;
+import com.integration.swagger.util.LoadResponseBodyUtil;
 
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponses;
@@ -162,6 +165,20 @@ public class IntegrationSwaggerController {
 		return new ResponseEntity<GetExampleParameterResponse>(newListGetExampleParameterResponse, (newListGetExampleParameterResponse == null) ? HttpStatus.BAD_REQUEST : HttpStatus.OK);
 	}
 	
+	@GetMapping(value="/find-user-commerce", produces = {  APPLICATION_JSON_VALUE })
+	ResponseEntity<LoadResponseBodyUtil> findUserCommerce() {
+	  List<FindUserCommerceResponse> listFindUserCommerceResponse = this.loadDataFindUserCommerceResponse();
+	  LoadResponseBodyUtil<ListResponseBodyUtil<FindUserCommerceResponse>> loadResponseBodyUtil = new LoadResponseBodyUtil<ListResponseBodyUtil<FindUserCommerceResponse>>();
+    try {
+      loadResponseBodyUtil.getResponse().setBody(listFindUserCommerceResponse);
+      loadResponseBodyUtil.setMetada("200", "OK", "Process success", "integration-swagger");
+    }catch (Exception e) {
+      loadResponseBodyUtil.setMetada("500", "INTERNAL ERROR", "Process fail", "integration-swagger");
+      return new ResponseEntity<LoadResponseBodyUtil>(loadResponseBodyUtil, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+    return new ResponseEntity<LoadResponseBodyUtil>(loadResponseBodyUtil, HttpStatus.OK);
+	}
+	
 	/*Private*/
 	private List<GetExampleParameterResponse> loadDataForGetExampleParameterResponse() {
 		log.info(".:. Start process [loadDataForGetExampleParameterResponse] - request: {}");
@@ -176,6 +193,18 @@ public class IntegrationSwaggerController {
 		}
 		log.info(".:. End process [loadDataForGetExampleParameterResponse] - response-count: {}", listGetExampleParameterResponse.size());
 		return listGetExampleParameterResponse;
+	}
+	
+	private List<FindUserCommerceResponse> loadDataFindUserCommerceResponse() {
+	  List<FindUserCommerceResponse> listFindUserCommerceResponse = new ArrayList<>();
+	   for (int i = 0; i < 100; i++) {
+	      String email = "email" + i;
+	      String id = "id" + i;
+	      String password = "password" + i;
+	      FindUserCommerceResponse findUserCommerceResponse = new FindUserCommerceResponse(id, email, password);
+	      listFindUserCommerceResponse.add(findUserCommerceResponse);
+	    }
+	   return listFindUserCommerceResponse;
 	}
 	
 	/*Private*/
